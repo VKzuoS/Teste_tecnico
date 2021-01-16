@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/blocos/auth_bloc.dart';
@@ -5,7 +6,9 @@ import 'package:provider/provider.dart';
 
 import 'pages/login.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -17,18 +20,24 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   @override
-  void initState() {
-    Firebase.initializeApp();
-    super.initState();
-  }
-  @override
   Widget build(BuildContext context) {
     return Provider(
-      create: (context) => AuthBloc(),
+      create: (context) => AuthBloc(FirebaseAuth.instance),
       child: MaterialApp(
         title: 'Teste Tecnico',
-        home: Login(),
+        home: AthenticatioWrapper(),
       ),
     );
+  }
+}
+
+class AthenticatioWrapper extends StatelessWidget {
+  const AthenticatioWrapper({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Login();
   }
 }
