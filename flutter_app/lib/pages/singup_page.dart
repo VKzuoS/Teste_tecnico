@@ -3,12 +3,12 @@ import 'package:flutter_app/blocos/auth_bloc.dart';
 import 'package:flutter_app/pages/home.dart';
 import 'package:provider/provider.dart';
 
-class SingUp_Page extends StatefulWidget {
+class SingUpPage extends StatefulWidget {
   @override
-  _SingUp_PageState createState() => _SingUp_PageState();
+  _SingUpPageState createState() => _SingUpPageState();
 }
 
-class _SingUp_PageState extends State<SingUp_Page> {
+class _SingUpPageState extends State<SingUpPage> {
   
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -50,9 +50,10 @@ class _SingUp_PageState extends State<SingUp_Page> {
                     context.read<AuthBloc>().signUp(//Atualizar estados com essa informação
                       email: emailController.text.trim(),
                       password: passwordController.text.trim(),
-                      bithday: birthController.text.trim(),
+                      birthday: birthController.text.trim(),
                       name: nameController.text.trim(),
                     );
+
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
                       builder: (context) => Home(),
                     ));

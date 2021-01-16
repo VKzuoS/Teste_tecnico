@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/blocos/auth_bloc.dart';
+import 'package:flutter_app/pages/tmdb.dart';
 import 'package:provider/provider.dart';
 
 import 'pages/login.dart';
@@ -9,6 +10,7 @@ import 'pages/login.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
   runApp(MyApp());
 }
 
@@ -25,14 +27,14 @@ class _MyAppState extends State<MyApp> {
       create: (context) => AuthBloc(FirebaseAuth.instance),
       child: MaterialApp(
         title: 'Teste Tecnico',
-        home: AthenticatioWrapper(),
+        home: AthenticationWrapper(),
       ),
     );
   }
 }
 
-class AthenticatioWrapper extends StatelessWidget {
-  const AthenticatioWrapper({
+class AthenticationWrapper extends StatelessWidget {
+  const AthenticationWrapper({
     Key key,
   }) : super(key: key);
 

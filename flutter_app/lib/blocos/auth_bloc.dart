@@ -18,9 +18,10 @@ class AuthBloc{
     }
   }
 
-  Future<String> signUp({String email, String password, String name, String bithday}) async{
+  Future<String> signUp({String email, String password, String name, String birthday}) async{
     try{
       await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
+      await _firebaseAuth.currentUser.updateProfile(displayName: name);
       return "criou";
     } on FirebaseAuthException catch (e){
       return e.message;

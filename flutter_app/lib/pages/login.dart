@@ -1,6 +1,6 @@
-import 'dart:async';
+//import 'dart:async';
 
-import 'package:firebase_core/firebase_core.dart';
+//import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/blocos/auth_bloc.dart';
 import 'package:flutter_app/pages/home.dart';
@@ -65,7 +65,7 @@ class _LoginState extends State<Login> {
               RaisedButton(
                 child: Text('Criar conta'),
                 onPressed: () => Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => SingUp_Page(),
+                      builder: (context) => SingUpPage(),
                     )),
               ),
               RaisedButton(
