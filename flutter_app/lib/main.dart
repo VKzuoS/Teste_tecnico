@@ -1,8 +1,10 @@
+import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/blocos/auth_bloc.dart';
-import 'package:flutter_app/pages/tmdb.dart';
+import 'package:flutter_app/blocos/filmes_bloc.dart';
+import 'package:flutter_app/tmdb.dart';
 import 'package:provider/provider.dart';
 
 import 'pages/login.dart';
@@ -24,12 +26,14 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return Provider(
-      create: (context) => AuthBloc(FirebaseAuth.instance),
-      child: MaterialApp(
-        title: 'Teste Tecnico',
-        home: AthenticationWrapper(),
-      ),
-    );
+        create: (context) => AuthBloc(FirebaseAuth.instance),
+        child: BlocProvider(
+          bloc: MovieBloc(),
+          child: MaterialApp(
+            title: 'Teste Tecnico',
+            home: AthenticationWrapper(),
+          ),
+        ));
   }
 }
 
