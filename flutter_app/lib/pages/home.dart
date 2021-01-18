@@ -7,6 +7,7 @@ import 'package:flutter_app/blocos/filmes_bloc.dart';
 import 'package:flutter_app/model/movie.dart';
 import 'package:flutter_app/movietile.dart';
 import 'package:flutter_app/pages/login.dart';
+import 'package:flutter_app/pages/para_assistir.dart';
 import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
@@ -63,28 +64,12 @@ class _HomeState extends State<Home> {
                                 BlocProvider.of<MovieBloc>(context).inSearch.add(pesquisa);
                                 Navigator.pop(context);
                           }),
-                          Align(
-                            alignment: Alignment.center,
-                            child: StreamBuilder<Map<String, Movie>>(
-                          stream: BlocProvider.of<AssistirBloc>(context).outAssistir,
-                          initialData: {},
-                          builder: (context, snapshot) {
-                            if (snapshot.hasData)
-                              return Text(
-                                '${snapshot.data.length}',
-                                style: TextStyle(color: Colors.black),
-                              );
-                            else
-                              return Text(
-                                "Jera",
-                                style: TextStyle(color: Colors.black),
-                              );
-                          },
-                        ),
-                          ),
                         ListTile(
                           leading: Icon(Icons.auto_awesome),
                           title: Text('Para Assistir'),
+                          onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context)=> Assistir()
+                          )),
                         ),
                         ListTile(
                             leading: Icon(Icons.logout),

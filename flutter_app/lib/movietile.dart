@@ -11,6 +11,7 @@ class MovieTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String imagem;
+    String chave;
     if (movie.posterPath != null) {
       imagem = 'https://image.tmdb.org/t/p/w500${movie.posterPath}';
     } else {
@@ -32,8 +33,9 @@ class MovieTile extends StatelessWidget {
                 stream: BlocProvider.of<AssistirBloc>(context).outAssistir,
                 initialData: {},
                 builder: (context, snapshot) {
+                  dynamic chave = movie.id;
                   return RaisedButton(
-                    child: snapshot.data.containsValue(movie) ? Text('Remover Para Assistir', style: TextStyle(color: Colors.red),) : Text('Adicionar Para Assistir', style: TextStyle(color: Colors.green)),
+                    child: snapshot.data.containsKey('$chave') ? Text('Remover Para Assistir', style: TextStyle(color: Colors.red),) : Text('Adicionar Para Assistir', style: TextStyle(color: Colors.green)),
                       onPressed:() {
                         BlocProvider.of<AssistirBloc>(context)
                             .toggleAssistir(movie);
