@@ -9,7 +9,6 @@ class SingUpPage extends StatefulWidget {
 }
 
 class _SingUpPageState extends State<SingUpPage> {
-  
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController birthController = TextEditingController();
@@ -47,12 +46,13 @@ class _SingUpPageState extends State<SingUpPage> {
               RaisedButton(
                   child: Text('Entrar'),
                   onPressed: () {
-                    context.read<AuthBloc>().signUp(//Atualizar estados com essa informação
-                      email: emailController.text.trim(),
-                      password: passwordController.text.trim(),
-                      birthday: birthController.text.trim(),
-                      name: nameController.text.trim(),
-                    );
+                    context.read<AuthBloc>().signUp(
+                          //Atualizar estados com essa informação
+                          email: emailController.text.trim(),
+                          password: passwordController.text.trim(),
+                          birthday: birthController.text.trim(),
+                          name: nameController.text.trim(),
+                        );
 
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
                       builder: (context) => Home(),

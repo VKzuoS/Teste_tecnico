@@ -55,18 +55,19 @@ class _LoginState extends State<Login> {
                   child: Text('Entrar'),
                   onPressed: () {
                     context.read<AuthBloc>().signIn(
-                      email: emailController.text.trim(),
-                      password: passwordController.text.trim(), 
-                    );
+                          email: emailController.text.trim(),
+                          password: passwordController.text.trim(),
+                        );
                     /* Navigator.of(context).pushReplacement(MaterialPageRoute(
                       builder: (context) => Home(),
                     )); */
                   }),
               RaisedButton(
                 child: Text('Criar conta'),
-                onPressed: () => Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => SingUpPage(),
-                    )),
+                onPressed: () =>
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => SingUpPage(),
+                )),
               ),
               RaisedButton(
                 child: Text('Login com Facebook'),
